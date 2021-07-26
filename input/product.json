@@ -1,0 +1,24 @@
+[
+  {
+    "productID": 1,
+    "prodName": "Apple",
+    "productDesc": "Apple Cell from Json",
+    "unit": 10,
+    "price": 300.23
+  },
+  {
+    "productID": 2,
+    "prodName": "Dell",
+    "productDesc": "Dell Computer from Json",
+    "unit": 80,
+    "price": 900.23
+  },
+  {
+    "productID": 3,
+    "prodName": "HP",
+    "productDesc": "HP Computer from Json",
+    "unit": 80,
+    "price": 1000.23
+  }
+
+]

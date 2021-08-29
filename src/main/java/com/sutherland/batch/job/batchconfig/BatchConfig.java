@@ -87,6 +87,7 @@ public class BatchConfig {
 
 	@Bean
 	public CustomItemReader reader() {
+
 		return  new CustomItemReader();
 	}
 
@@ -151,7 +152,6 @@ public class BatchConfig {
 		FlatFileItemReader reader = new FlatFileItemReader();
 		// step 1 let reader know where is the file
 		reader.setResource(inputFile);
-
 		// step 2 create the line Mapper
 		reader.setLineMapper(new DefaultLineMapper<Product>() {  // Here Set LineMapper
 			{
@@ -167,7 +167,6 @@ public class BatchConfig {
 								);
 					}
 				});
-
 				setFieldSetMapper(new BeanWrapperFieldSetMapper<Product>() { // Here Set FieldSetMapper
 					{
 						setTargetType(Product.class);
@@ -175,12 +174,10 @@ public class BatchConfig {
 				});
 			}
 		}
-
-				);
+		);
 		// step 3 tell reader to skip the header
 		reader.setLinesToSkip(1);
 		return reader;
-
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -188,13 +185,10 @@ public class BatchConfig {
 	public JdbcCursorItemReader jdbcCursorItemReader() {
 		// step 1 Create JdbcCursorItemReader Object.
 		JdbcCursorItemReader reader = new JdbcCursorItemReader();
-		
 		// step 2 Set DataSource.
 		reader.setDataSource(this.dataSource);
-		
 		// step 3 Set Sql Query.
 		reader.setSql("select id, productname, productcategory , productsubcategory, productcontainer, productbasemargin from products");
-		
 		// step 4 Set RowMapper
 		reader.setRowMapper(new BeanPropertyRowMapper() {
 			{
@@ -212,7 +206,6 @@ public class BatchConfig {
 		// step2 Pass inputfile and create JacksonJsonObjectReader Object, with arguments as Domain Class. 
 		JsonItemReader reader = new JsonItemReader(inputFile, new JacksonJsonObjectReader(Product.class));
 		return reader;
-
 	}
 	
 	@SuppressWarnings("rawtypes")
@@ -224,7 +217,6 @@ public class BatchConfig {
 		reader.setTargetObject(productServiceAdapter);
 		// step 3 , Set TargetMethod.
 		reader.setTargetMethod("nextProduct");
-
 		return reader;
 	}
 	
@@ -245,7 +237,6 @@ public class BatchConfig {
 
 	private Tasklet billMailerTasklet() {
 		return new Tasklet() {
-
 			@Override
 			public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
 				System.out.println("Bill Mailer Triggered!!!");

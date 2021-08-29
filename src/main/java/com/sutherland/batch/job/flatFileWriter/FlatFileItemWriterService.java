@@ -35,7 +35,6 @@ public class FlatFileItemWriterService {
 		reader.setResource(inputFile);
 		// Step 3, Set LinesToSkip.
 		reader.setLinesToSkip(1);
-		
 		// Step 4, Set LineMapper.
 		reader.setLineMapper(new DefaultLineMapper() {
 			{
@@ -46,18 +45,14 @@ public class FlatFileItemWriterService {
 						setDelimiter(",");
 					}
 				});
-				
 				// Step 6, Set FieldSetMapper.
 				setFieldSetMapper(new BeanWrapperFieldSetMapper() {
 					{
 						setTargetType(Product.class);
 					}
 				});
-
-				
 			}
 		});
-
 		return reader;
 	}
 
@@ -81,7 +76,6 @@ public class FlatFileItemWriterService {
 				});
 			}
 		});
-
 		// Step 5, Set  the Header.
 		writer.setHeaderCallback(new FlatFileHeaderCallback() {
 			@Override
@@ -89,10 +83,8 @@ public class FlatFileItemWriterService {
 				writer.write("productID, productName, productDesc, price, unit");
 			}
 		});
-
 		// Step 6, Set AppendAllowed TRUE.
 		writer.setAppendAllowed(false);
-
 		// Step 7, Set the Footer.
 		writer.setFooterCallback(new FlatFileFooterCallback() {
 			@Override

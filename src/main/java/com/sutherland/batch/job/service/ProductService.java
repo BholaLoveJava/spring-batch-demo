@@ -17,8 +17,6 @@ public class ProductService {
 		ArrayList<Product> productList = new ArrayList<Product>();
 		for (Product p : products)
 			productList.add(p);
-
 		return productList;
-
 	}
 }
